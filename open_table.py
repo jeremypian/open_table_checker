@@ -19,10 +19,12 @@ class OpenTableChecker(MDBatch.MDBatch):
 			if 'No tables are available' in dom:
 				print 'Not Found'
 				self.notify_email('NOT!')
-			else:
+			elif num_avail_times > 1 or not '<span class="t">4:30</span>' in dom:
 				print 'Found!'
 				self.notify_email('Found! Hurry!')
 				print 'Email sent!'
+			else:
+				print 'Only 4:30 is available.'
 			time.sleep(60)
 
 
